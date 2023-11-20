@@ -21,13 +21,25 @@
     {% endif %}
     <br>
     <br>
-
+{% comment %} 
     {% for rec in recomendations %}
-    {% if new.id != rec.id %}
-        <p>{{ rec }}</p> <br>
-    {% endif %}
+        {% if new.id != rec.id %}
+            <p>{{ rec }}</p> <br>
+        {% endif %}
+    {% endfor %} {% endcomment %}
+
+    {% for recomendations_category in recomendations_category %}
+        {{ recomendations_category.id }}<br><br>
+    
     {% endfor %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    {% for recomendations_tag in recomendations_tag %}
+        {{ recomendations_tag.id }}<br><br>
 
-
+    {% endfor %}
 
 {% endblock content %}

@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import HomePageView, AddNewView, MyNewsView, NewDetailView, NewUpdateView, NewDeleteView, SearchView, CategoryView, TagsView
+from .views import HomePageView, AddNewView, MyNewsView, NewDetailView,\
+    NewUpdateView, NewDeleteView, SearchView, CategoryView, TagsView, translate_test
 app_name = "news"
 urlpatterns = [
     path("", HomePageView.as_view(), name="home"),
@@ -11,5 +12,6 @@ urlpatterns = [
     path('search/', SearchView.as_view(), name='search'  ),
     path('category/<int:pk>', CategoryView.as_view(), name='category'  ),
     path('tags/<int:pk>', TagsView.as_view(), name='tags'  ),
+    path('translate_test/', translate_test, name='translate_test'),
     
 ]

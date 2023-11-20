@@ -67,12 +67,16 @@ class NewDetailView(View):
     def get(self, request, pk):
         new = News.objects.get(id=pk)
         category = News.objects.filter(category=new.category)
-        recom = category 
+        
+        
         for x in new.tags.all():
-            recom = recom | News.objects.filter(tags = x)
+            recom = News.objects.filter(tags = x)
+            
+       
         context = {
             "new": new,
-            'recomendations': recom,
+            'recomendations_category': category,
+            'recomendations_tag': recom,
             
         }
         return render(request, "new_detail.html", context)
@@ -118,3 +122,6 @@ class TagsView(View):
         }
         return render(request, "home.html", context)
     
+
+def translate_test(request):
+    return render(request, "new/index.html")
