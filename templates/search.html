@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Search</h1>
+ 
+<p>{{ query }} qidiruv natijasi {{ object_list|length }} </p><br>
+{% for new in object_list %}
+    <a href={% url "news:new_detail" new.id %}>{{ new.title }}</a>
+
+    <h2>{{ new.desc }}</h2>
+    <p>{{ new.create_at }}</p>
+    <p>{{ new.user }}</p>
+    
+    <br>
+    <br>
+{% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  
+
+    <h1>{{ new.title }}</h1>
+    <h2>{{ new.desc }}</h2>
+    <h2>{{ new.body }}</h2>
+    <img src="{{ new.img.url }}" alt="image">
+    <p>{{ new.create_at }}</p>
+    {% if request.user == new.user or request.user.is_superuser %}
+
+        <a href="{% url "news:new_update" new.id %}">Update</a>/
+        
+        <form method="POST" action="{% url "news:new_delete" new.id %}">
+            {% csrf_token %}
+            <input type="submit" value="Delete">
+        </form>
+
+    {% endif %}
+    <br>
+    <br>
+
+    {% for rec in recomendations %}
+    {% if new.id != rec.id %}
+        <p>{{ rec }}</p> <br>
+    {% endif %}
+    {% endfor %}
+
+
+
+{% endblock content %}
